@@ -1,4 +1,5 @@
 import { connection } from "next/server";
+import TopNav from "../components/TopNav";
 
 export default async function Home() {
   await connection();
@@ -9,10 +10,11 @@ export default async function Home() {
   ];
   const randomIndex = Math.floor(Math.random() * heroImages.length);
   const selectedImage = heroImages[randomIndex];
+
   return (
-    <main>
+    <>
       <section
-        className="flex min-h-screen items-center justify-center bg-cover bg-center"
+        className="flex min-h-[calc(100svh-5rem)] items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage: `url('${selectedImage}')`,
         }}
@@ -31,39 +33,44 @@ export default async function Home() {
           />
         </div>
       </section>
-      <section className="bg-black px-6 py-20 text-white">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
-            Welcome in Nightclub
-          </h2>
 
-          <img
-            src="/assets/bottom_line2.png"
-            alt="Bottom Line"
-            className="mx-auto mt-2"
-          />
+      <TopNav />
 
-          <div className="mt-16 grid grid-cols-1 gap-7 md:grid-cols-3">
-            <img
-              src="/assets/content-img/thumb1.jpg"
-              alt="Festdækket bord"
-              className="h-[450px] w-full object-cover"
-            />
+      <main>
+        <section className="bg-black px-6 py-20 text-white">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
+              Welcome in Nightclub
+            </h2>
 
             <img
-              src="/assets/content-img/food_1.jpg"
-              alt="Servering af mad"
-              className="h-[450px] w-full object-cover"
+              src="/assets/bottom_line2.png"
+              alt="Bottom Line"
+              className="mx-auto mt-2"
             />
 
-            <img
-              src="/assets/content-img/thumb2.jpg"
-              alt="Gæster i natklub"
-              className="h-[450px] w-full object-cover"
-            />
+            <div className="mt-16 grid grid-cols-1 gap-7 md:grid-cols-3">
+              <img
+                src="/assets/content-img/thumb1.jpg"
+                alt="Festdækket bord"
+                className="h-[450px] w-full object-cover"
+              />
+
+              <img
+                src="/assets/content-img/food_1.jpg"
+                alt="Servering af mad"
+                className="h-[450px] w-full object-cover"
+              />
+
+              <img
+                src="/assets/content-img/thumb2.jpg"
+                alt="Gæster i natklub"
+                className="h-[450px] w-full object-cover"
+              />
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }
