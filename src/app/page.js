@@ -1,4 +1,8 @@
+import { connection } from "next/server";
+
 export default async function Home() {
+  await connection();
+
   const heroImages = [
     "/assets/bg/header_bg_1.jpg",
     "/assets/bg/header_bg_2.jpg",
@@ -10,7 +14,7 @@ export default async function Home() {
       <section
         className="flex min-h-screen items-center justify-center bg-cover bg-center"
         style={{
-          backgroundImage: "url('/assets/bg/header_bg_1.jpg')",
+          backgroundImage: `url('${selectedImage}')`,
         }}
       >
         <div className="text-center">
