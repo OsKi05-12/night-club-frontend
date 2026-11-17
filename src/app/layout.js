@@ -36,10 +36,18 @@ export default function RootLayout({ children }) {
           </a>
 
           <div className="flex items-center gap-8">
-            <a href="/">Home</a>
-            <a href="/events">Events</a>
-            <a href="/booking">Book Table</a>
-            <a href="/contact">Contact Us</a>
+            <a className="hover:text-pink-500" href="/">
+              Home
+            </a>
+            <a className="hover:text-pink-500" href="/events">
+              Events
+            </a>
+            <a className="hover:text-pink-500" href="/booking">
+              Book Table
+            </a>
+            <a className="hover:text-pink-500" href="/contact">
+              Contact Us
+            </a>
           </div>
         </nav>
 

@@ -31,6 +31,9 @@ export default async function Home() {
           />
         </div>
       </section>
+      <section className="bg-black px-6 py-20 text-center text-white">
+        <h2 className="text-4xl font-bold">Welcome to Night Club</h2>
+      </section>
     </main>
   );
 }
