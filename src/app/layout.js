@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         >
           <a href="/">
             <img
-              src="/assets/icon/logo_header.svg"
+              src="/assets/icon/Logo_header.svg"
               alt="Night Club"
               className="w-48"
             />

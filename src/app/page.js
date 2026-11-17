@@ -19,7 +19,7 @@ export default async function Home() {
       >
         <div className="text-center">
           <img
-            src="/assets/icon/logo.svg"
+            src="/assets/icon/Logo.svg"
             alt="Night Club"
             className="hero-logo mx-auto w-64"
           />
