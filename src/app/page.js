@@ -19,14 +19,10 @@ export default async function Home() {
       >
         <div className="text-center">
           <img
-            src="/assets/Logo.png"
+            src="/assets/logo/logo.svg"
             alt="Night Club"
             className="hero-logo mx-auto w-64"
           />
-
-          <p className="mt-4 text-xl uppercase tracking-widest text-white">
-            Have a good time
-          </p>
         </div>
       </section>
     </main>
