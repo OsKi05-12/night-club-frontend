@@ -26,7 +26,7 @@ export default async function Home() {
 
           <img
             src="/assets/bottom_line2.png"
-            alt=""
+            alt="Bottom Line"
             className="hero-line mx-auto mt-2"
           />
         </div>

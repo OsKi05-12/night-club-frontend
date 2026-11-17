@@ -22,7 +22,29 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <nav
+          aria-label="Hovednavigation"
+          className="sticky top-0 z-50 flex items-center justify-between border-y border-pink-500 bg-black px-10 py-5 text-white"
+        >
+          <a href="/">
+            <img
+              src="/assets/icon/logo_header.svg"
+              alt="Night Club"
+              className="w-48"
+            />
+          </a>
+
+          <div className="flex items-center gap-8">
+            <a href="/">Home</a>
+            <a href="/events">Events</a>
+            <a href="/booking">Book Table</a>
+            <a href="/contact">Contact Us</a>
+          </div>
+        </nav>
+
+        {children}
+      </body>
     </html>
   );
 }
