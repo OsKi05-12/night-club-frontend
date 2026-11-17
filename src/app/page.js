@@ -23,6 +23,12 @@ export default async function Home() {
             alt="Night Club"
             className="hero-logo mx-auto w-64"
           />
+
+          <img
+            src="/assets/bottom_line2.png"
+            alt=""
+            className="hero-line mx-auto mt-2"
+          />
         </div>
       </section>
     </main>
