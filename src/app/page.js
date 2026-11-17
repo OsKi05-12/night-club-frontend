@@ -14,9 +14,10 @@ export default async function Home() {
   return (
     <>
       <section
-        className="flex min-h-[calc(100svh-5rem)] items-center justify-center bg-cover bg-center"
+        className="flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage: `url('${selectedImage}')`,
+          minHeight: "calc(100svh - 6rem)",
         }}
       >
         <div className="text-center">
