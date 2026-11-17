@@ -31,8 +31,34 @@ export default async function Home() {
           />
         </div>
       </section>
-      <section className="bg-black px-6 py-20 text-center text-white">
-        <h2 className="text-4xl font-bold">Welcome to Night Club</h2>
+      <section className="bg-black px-6 py-20 text-white">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
+            Welcome in Nightclub
+          </h2>
+
+          <div className="mx-auto mt-6 h-px w-40 bg-pink-500"></div>
+
+          <div className="mt-16 grid grid-cols-1 gap-7 md:grid-cols-3">
+            <img
+              src="/assets/content-img/thumb1.jpg"
+              alt="Festdækket bord"
+              className="h-[450px] w-full object-cover"
+            />
+
+            <img
+              src="/assets/content-img/food.jpg"
+              alt="Servering af mad"
+              className="h-[450px] w-full object-cover"
+            />
+
+            <img
+              src="/assets/content-img/thumb2.jpg"
+              alt="Gæster i natklub"
+              className="h-[450px] w-full object-cover"
+            />
+          </div>
+        </div>
       </section>
     </main>
   );
