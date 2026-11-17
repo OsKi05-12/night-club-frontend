@@ -1,4 +1,10 @@
-export default function Home() {
+export default async function Home() {
+  const heroImages = [
+    "/assets/bg/header_bg_1.jpg",
+    "/assets/bg/header_bg_2.jpg",
+  ];
+  const randomIndex = Math.floor(Math.random() * heroImages.length);
+  const selectedImage = heroImages[randomIndex];
   return (
     <main>
       <section
