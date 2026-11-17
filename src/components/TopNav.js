@@ -2,7 +2,7 @@ export default function TopNav() {
   return (
     <nav
       aria-label="Hovednavigation"
-      className="sticky top-0 z-50 flex items-center justify-between border-y border-pink-500 bg-black px-10 h-20 text-white"
+      className="sticky top-0 z-50 flex items-center justify-between border-y border-pink-500 bg-black px-10 py-5 text-white"
     >
       <a href="/">
         <img
