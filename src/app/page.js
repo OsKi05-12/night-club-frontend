@@ -21,7 +21,7 @@ export default async function Home() {
           <img
             src="/assets/Logo.png"
             alt="Night Club"
-            className="mx-auto w-64"
+            className="hero-logo mx-auto w-64"
           />
 
           <p className="mt-4 text-xl uppercase tracking-widest text-white">
