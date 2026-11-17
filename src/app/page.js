@@ -37,7 +37,11 @@ export default async function Home() {
             Welcome in Nightclub
           </h2>
 
-          <div className="mx-auto mt-6 h-px w-40 bg-pink-500"></div>
+          <img
+            src="/assets/bottom_line2.png"
+            alt="Bottom Line"
+            className="mx-auto mt-2"
+          />
 
           <div className="mt-16 grid grid-cols-1 gap-7 md:grid-cols-3">
             <img
@@ -47,7 +51,7 @@ export default async function Home() {
             />
 
             <img
-              src="/assets/content-img/food.jpg"
+              src="/assets/content-img/food_1.jpg"
               alt="Servering af mad"
               className="h-[450px] w-full object-cover"
             />
