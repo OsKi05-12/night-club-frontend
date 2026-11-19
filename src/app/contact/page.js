@@ -1,4 +1,5 @@
 import TopNav from "../../components/TopNav";
+import PageHeader from "../../components/PageHeader";
 import ContactForm from "./ContactForm";
 
 export default function ContactPage() {
@@ -45,9 +46,12 @@ export default function ContactPage() {
     <>
       <TopNav />
 
-      <main className="flex-1 bg-zinc-950 px-6 py-20 text-white">
-        <h1 className="mb-12 text-center text-4xl">Contact Us</h1>
-        <ContactForm sendMessage={sendMessage} />
+      <main className="flex-1 bg-zinc-950 text-white">
+        <PageHeader title="Contact Us" />
+
+        <div className="px-6 py-20">
+          <ContactForm sendMessage={sendMessage} />
+        </div>
       </main>
     </>
   );
