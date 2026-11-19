@@ -32,6 +32,18 @@ export default async function Home() {
             alt="Bottom Line"
             className="hero-line mx-auto mt-2"
           />
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+            <a
+              href="/events"
+              className="border-2 border-white bg-transparent px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-white hover:text-black"
+            >
+              VIEW EVENTS
+            </a>
+
+            <a href="/booking" className="cta-button">
+              BOOK TABLE
+            </a>
+          </div>
         </div>
       </section>
 
@@ -51,23 +63,25 @@ export default async function Home() {
             />
 
             <div className="mt-16 grid grid-cols-1 gap-7 md:grid-cols-3">
-              <img
-                src="/assets/content-img/thumb1.jpg"
-                alt="Festdækket bord"
-                className="h-[450px] w-full object-cover"
-              />
+              {[
+                {
+                  title: "Night Club",
+                  image: "/assets/content-img/thumb1.jpg",
+                },
+                {
+                  title: "Restaurant",
+                  image: "/assets/content-img/food_1.jpg",
+                },
+                { title: "Bar", image: "/assets/content-img/thumb2.jpg" },
+              ].map((item) => (
+                <button key={item.title} type="button" className="service-card">
+                  <img src={item.image} alt={item.title} />
 
-              <img
-                src="/assets/content-img/food_1.jpg"
-                alt="Servering af mad"
-                className="h-[450px] w-full object-cover"
-              />
-
-              <img
-                src="/assets/content-img/thumb2.jpg"
-                alt="Gæster i natklub"
-                className="h-[450px] w-full object-cover"
-              />
+                  <div className="service-overlay">
+                    <span>{item.title}</span>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
         </section>
