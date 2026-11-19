@@ -24,7 +24,6 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
 @keyframes heroLogoReveal {
   from {
     opacity: 0;
@@ -57,8 +56,100 @@ body {
   animation: lineReveal 1s ease-out both;
 }
 
-.footer-bg {
-  background-image:
-    linear-gradient(oklch(0% 0 0 / 85%), oklch(0% 0 0 / 94%)),
-    url("/assets/bg/footerbg.jpg");
+.cta-button {
+  display: inline-block;
+  padding: 18px 45px;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  background: linear-gradient(
+    110deg,
+    oklch(65% 0.25 10),
+    oklch(50% 0.25 330),
+    oklch(65% 0.25 10)
+  );
+  background-size: 200% 200%;
+  box-shadow: 0 0 25px oklch(65% 0.25 10 / 50%);
+  border-top: 2px solid oklch(80% 0.15 350);
+  border-right: 2px solid oklch(80% 0.15 350);
+  transition: box-shadow 0.3s;
+}
+
+.cta-button:hover {
+  animation: gradientMove 2s linear infinite;
+  box-shadow: 0 0 40px oklch(65% 0.25 10 / 65%);
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.service-card {
+  position: relative;
+  height: 450px;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+
+.service-overlay span {
+  color: white;
+  font-size: 24px;
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+
+.service-overlay::before,
+.service-overlay::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: oklch(65% 0.25 10);
+  transition: transform 1.5s;
+}
+
+.service-overlay::before {
+  top: 0;
+  transform: translateY(-450px);
+}
+
+.service-overlay::after {
+  bottom: 0;
+  transform: translateY(450px);
+}
+
+.service-card:is(:hover, :focus) .service-overlay,
+.service-card:is(:hover, :focus) .service-overlay span {
+  opacity: 1;
+}
+
+.service-card:is(:hover, :focus) .service-overlay::before,
+.service-card:is(:hover, :focus) .service-overlay::after {
+  transform: translateY(0);
 }
