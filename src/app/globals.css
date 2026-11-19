@@ -156,6 +156,5 @@ body {
 
 .page-header {
   background-image:
-    linear-gradient(oklch(0% 0 0 / 85%), oklch(0% 0 0 / 85%)),
-    url("/assets/bg/footerbg.jpg");
+    linear-gradient(oklch(0% 0 0 / 65%) 0 0), url("/assets/bg/footerbg.jpg");
 }
