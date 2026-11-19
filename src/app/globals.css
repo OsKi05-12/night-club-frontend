@@ -153,3 +153,8 @@ body {
 .service-card:is(:hover, :focus) .service-overlay::after {
   transform: translateY(0);
 }
+
+.page-header {
+  background-image:
+    linear-gradient(oklch(0% 0 0 / 65%) 0 0), url("/assets/bg/footerbg.jpg");
+}

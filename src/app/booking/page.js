@@ -1,11 +1,13 @@
 import TopNav from "../../components/TopNav";
+import PageHeader from "../../components/PageHeader";
 
-export default function BookingPage() {
+export default function EventsPage() {
   return (
     <>
       <TopNav />
-      <main className="flex-1 bg-black p-8 text-white">
-        <h1 className="text-4xl font-bold">Book Table</h1>
+
+      <main className="flex-1 bg-black text-white">
+        <PageHeader title="Booking" />
       </main>
     </>
   );
