@@ -24,6 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 @keyframes heroLogoReveal {
   from {
     opacity: 0;
@@ -54,4 +55,10 @@ body {
 
 .hero-line {
   animation: lineReveal 1s ease-out both;
+}
+
+.footer-bg {
+  background-image:
+    linear-gradient(oklch(0% 0 0 / 85%), oklch(0% 0 0 / 94%)),
+    url("/assets/bg/footerbg.jpg");
 }
