@@ -164,7 +164,9 @@ body {
 }
 
 .footer-bg {
-  background-image: url("/assets/bg/footerbg.jpg");
+  background-image:
+    linear-gradient(oklch(0% 0 0 / 65%), oklch(0% 0 0 / 65%)),
+    url("/assets/bg/footerbg.jpg");
   background-size: cover;
   background-position: center;
 }
