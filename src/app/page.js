@@ -24,13 +24,13 @@ export default async function Home() {
           <img
             src="/assets/icon/Logo.svg"
             alt="Night Club"
-            className="hero-logo mx-auto w-64"
+            className="hero-logo mx-auto w-128"
           />
 
           <img
             src="/assets/bottom_line2.png"
             alt="Bottom Line"
-            className="hero-line mx-auto mt-2"
+            className="hero-line mx-auto mt-2 w-120"
           />
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
             <a
