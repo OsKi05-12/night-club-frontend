@@ -15,6 +15,7 @@ export default function Footer() {
             <h2 className="mb-2 text-xl font-semibold uppercase text-pink-500">
               Location
             </h2>
+
             <address className="mb-8 not-italic">
               Kompagnistræde 278
               <br />
@@ -24,6 +25,7 @@ export default function Footer() {
             <h2 className="mb-2 text-xl font-semibold uppercase text-pink-500">
               Opening Hours
             </h2>
+
             <p>WED - THU: 10:30 PM TO 3 AM</p>
             <p>SAT - SUN: 11 PM TO 5 AM</p>
           </div>
@@ -43,11 +45,13 @@ export default function Footer() {
                   loading="lazy"
                   className="size-20 shrink-0 object-cover xl:size-26"
                 />
+
                 <div>
                   <p>
                     Get ready for an epic night with DJ Anya at The Blue Room.
                     Doors open at 9 PM!
                   </p>
+
                   <time
                     dateTime="2026-04-17"
                     className="mt-3 block text-sm text-pink-500"
@@ -66,11 +70,13 @@ export default function Footer() {
                   loading="lazy"
                   className="size-20 shrink-0 object-cover xl:size-26"
                 />
+
                 <div>
                   <p>
                     Join us for Retro Night with DJ Elroy at The Velvet Room.
                     Doors open at 8 PM!
                   </p>
+
                   <time
                     dateTime="2026-04-17"
                     className="mt-3 block text-sm text-pink-500"
@@ -89,24 +95,40 @@ export default function Footer() {
 
             <ul className="space-y-10">
               <li className="flex items-start gap-4">
-                <span aria-hidden="true" className="size-6 shrink-0" />
+                <img
+                  src="/assets/icon/x.png"
+                  alt="X"
+                  width={20}
+                  height={20}
+                  className="mt-1 size-5 shrink-0 object-contain"
+                />
+
                 <div>
                   <p>
                     It is a long established fact that a reader will be
                     distracted by the readable...
                   </p>
+
                   <p className="mt-3 text-sm text-pink-500">5 hours ago</p>
                 </div>
               </li>
 
               <li className="flex items-start gap-4">
-                <span aria-hidden="true" className="size-6 shrink-0" />
+                <img
+                  src="/assets/icon/x.png"
+                  alt="X"
+                  width={20}
+                  height={20}
+                  className="mt-1 size-5 shrink-0 object-contain"
+                />
+
                 <div>
                   <p>
                     Experience the electrifying beats of DJ Kai at Club Nova.
                     Doors open at 10 PM, and the rhythm never stops. Get ready
                     for a night of unforgettable music!
                   </p>
+
                   <p className="mt-3 text-sm text-pink-500">5 hours ago</p>
                 </div>
               </li>
@@ -122,10 +144,30 @@ export default function Footer() {
           <div>
             <p className="mb-4">Stay Connected With Us</p>
 
-            <div aria-hidden="true" className="flex justify-center gap-4">
-              <span className="size-11 border border-white" />
-              <span className="size-11 border border-white" />
-              <span className="size-11 border border-white" />
+            <div className="flex justify-center gap-4">
+              <img
+                src="/assets/icon/facebook.png"
+                alt="Facebook"
+                width={44}
+                height={44}
+                className="size-11 object-contain"
+              />
+
+              <img
+                src="/assets/icon/snap.png"
+                alt="Snapchat"
+                width={44}
+                height={44}
+                className="size-11 object-contain"
+              />
+
+              <img
+                src="/assets/icon/insta.png"
+                alt="Instagram"
+                width={44}
+                height={44}
+                className="size-11 object-contain"
+              />
             </div>
           </div>
 
