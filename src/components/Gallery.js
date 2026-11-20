@@ -115,7 +115,12 @@ export default function Gallery({ images }) {
             <div className="gallery-caption">
               <h3 className="text-lg font-bold uppercase">Night Club Party</h3>
 
-              <p className="mt-2">{selectedImage.description}</p>
+              <p className="mt-2">
+                {selectedImage.description?.trim() &&
+                selectedImage.description.trim() !== "A photo"
+                  ? selectedImage.description
+                  : `${selectedImage.alt}. Experience the atmosphere at Night Club, where live performances, colourful lights and a lively dance floor bring guests together for a night of music and celebration.`}
+              </p>
             </div>
 
             <div className="gallery-controls">

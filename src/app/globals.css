@@ -25,8 +25,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Hero */
-
 @keyframes heroLogoReveal {
   from {
     opacity: 0;
@@ -58,8 +56,6 @@ body {
 .hero-line {
   animation: lineReveal 1s ease-out both;
 }
-
-/* Book Table-knap */
 
 .cta-button {
   display: inline-block;
@@ -95,8 +91,6 @@ body {
     background-position: 200% 50%;
   }
 }
-
-/* Welcome-kort */
 
 .service-card {
   position: relative;
@@ -161,8 +155,6 @@ body {
   transform: translateY(0);
 }
 
-/* Header på undersider */
-
 .page-header {
   background-image:
     linear-gradient(oklch(0% 0 0 / 65%), oklch(0% 0 0 / 65%)),
@@ -171,17 +163,14 @@ body {
   background-position: center;
 }
 
-/* Footer */
-
 .footer-bg {
   background-image: url("/assets/bg/footerbg.jpg");
   background-size: cover;
   background-position: center;
 }
 
-/* Gallery */
-
 .gallery-section {
+  overflow: hidden;
   background-color: oklch(14% 0 0);
   background-image: url("/assets/bg/pattern_bg.jpg");
 }
@@ -226,8 +215,6 @@ body {
   }
 }
 
-/* Gallery-animation ved scroll */
-
 .gallery-visible .gallery-card {
   animation: galleryEnter 800ms ease-out both;
 }
@@ -259,16 +246,14 @@ body {
 @keyframes galleryEnter {
   from {
     opacity: 0;
-    transform: translateY(60px) scale(0.95);
+    transform: translateX(-100%);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateX(0);
   }
 }
-
-/* Gallery-overlay og pink hjørner */
 
 .gallery-overlay {
   position: absolute;
@@ -306,8 +291,6 @@ body {
 .gallery-card:is(:hover, :focus-visible) .gallery-overlay {
   opacity: 1;
 }
-
-/* Gallery-lightbox */
 
 .gallery-dialog {
   position: fixed;
@@ -372,8 +355,6 @@ body {
   background: oklch(45% 0.18 10);
 }
 
-/* Tastaturfokus */
-
 .cta-button:focus-visible,
 .service-card:focus-visible,
 .gallery-card:focus-visible,
@@ -382,8 +363,6 @@ body {
   outline: 3px solid oklch(75% 0.2 10);
   outline-offset: -3px;
 }
-
-/* Mindre bevægelse, hvis brugeren har valgt det */
 
 @media (prefers-reduced-motion: reduce) {
   .hero-logo,
