@@ -80,9 +80,7 @@ export default function Gallery({ images }) {
             >
               <img src={image.src} alt="" loading="lazy" />
 
-              <span className="gallery-overlay" aria-hidden="true">
-                +
-              </span>
+              <span className="gallery-overlay" aria-hidden="true" />
             </button>
           ))}
         </div>
