@@ -1,6 +1,7 @@
 import { connection } from "next/server";
 import TopNav from "../components/TopNav";
 import HoverCard from "../components/HoverCard";
+import Gallery from "../components/Gallery";
 
 export default async function Home() {
   await connection();
@@ -9,8 +10,34 @@ export default async function Home() {
     "/assets/bg/header_bg_1.jpg",
     "/assets/bg/header_bg_2.jpg",
   ];
+
   const randomIndex = Math.floor(Math.random() * heroImages.length);
   const selectedImage = heroImages[randomIndex];
+
+  const apiUrl = process.env.API_URL || "http://localhost:4000";
+
+  let galleryImages = [];
+
+  try {
+    const response = await fetch(`${apiUrl}/gallery`, {
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not load gallery");
+    }
+
+    const data = await response.json();
+
+    galleryImages = data.map((image) => ({
+      id: image.id,
+      src: new URL(image.asset.url, apiUrl).href,
+      alt: image.asset.alt,
+      description: image.description,
+    }));
+  } catch (error) {
+    console.error("Gallery:", error);
+  }
 
   return (
     <>
@@ -25,14 +52,15 @@ export default async function Home() {
           <img
             src="/assets/icon/Logo.svg"
             alt="Night Club"
-            className="hero-logo mx-auto w-64"
+            className="hero-logo mx-auto w-128"
           />
 
           <img
             src="/assets/bottom_line2.png"
             alt="Bottom Line"
-            className="hero-line mx-auto mt-2"
+            className="hero-line mx-auto mt-2 w-120"
           />
+
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
             <a
               href="/events"
@@ -306,62 +334,9 @@ export default async function Home() {
             </div>
           </div>
         </section>
-        <section className="bg-black px-6 py-20 text-white">
-          <div className="mx-auto max-w-none">
-            <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
-              Night Club Gallery
-            </h2>
 
-            <img
-              src="/assets/bottom_line2.png"
-              alt=""
-              className="mx-auto mt-2"
-            />
+        <Gallery images={galleryImages} />
 
-            <div className="mt-16">
-              <div className="grid grid-cols-2 md:grid-cols-4">
-                <img
-                  src="/assets/gallery/gallery1.jpg"
-                  alt="DJ ved en fest"
-                  className="h-60 w-full object-cover"
-                />
-                <img
-                  src="/assets/gallery/gallery2.jpg"
-                  alt="Gæster i natklubben"
-                  className="h-60 w-full object-cover"
-                />
-                <img
-                  src="/assets/gallery/gallery3.jpg"
-                  alt="Sangerinde på scenen"
-                  className="h-60 w-full object-cover"
-                />
-                <img
-                  src="/assets/gallery/gallery4.jpg"
-                  alt="Portræt fra natklubben"
-                  className="h-60 w-full object-cover"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3">
-                <img
-                  src="/assets/gallery/gallery5.jpg"
-                  alt="Guitarist på scenen"
-                  className="h-60 w-full object-cover"
-                />
-                <img
-                  src="/assets/gallery/gallery6.jpg"
-                  alt="Festende gæster"
-                  className="h-60 w-full object-cover"
-                />
-                <img
-                  src="/assets/gallery/gallery7.jpg"
-                  alt="Koncertpublikum"
-                  className="h-60 w-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
         <section className="bg-black px-6 py-20 text-white">
           <div className="mx-auto max-w-6xl">
             <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
@@ -385,6 +360,7 @@ export default async function Home() {
             <h2 className="mb-12 text-center text-3xl font-bold uppercase">
               Latest Video
             </h2>
+
             <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">
               <img
                 src="/assets/content-img/video_poster.jpg"
