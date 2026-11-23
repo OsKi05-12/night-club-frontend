@@ -1,5 +1,6 @@
 import { connection } from "next/server";
 import TopNav from "../components/TopNav";
+import HoverCard from "../components/HoverCard";
 
 export default async function Home() {
   await connection();
@@ -67,20 +68,28 @@ export default async function Home() {
                 {
                   title: "Night Club",
                   image: "/assets/content-img/thumb1.jpg",
+                  description:
+                    "Experience unforgettable nights with great music and atmosphere.",
                 },
                 {
                   title: "Restaurant",
                   image: "/assets/content-img/food_1.jpg",
+                  description:
+                    "Enjoy delicious food and a unique dining experience.",
                 },
-                { title: "Bar", image: "/assets/content-img/thumb2.jpg" },
+                {
+                  title: "Bar",
+                  image: "/assets/content-img/thumb2.jpg",
+                  description:
+                    "Discover our cocktails and enjoy an evening with friends.",
+                },
               ].map((item) => (
-                <button key={item.title} type="button" className="service-card">
-                  <img src={item.image} alt={item.title} />
-
-                  <div className="service-overlay">
-                    <span>{item.title}</span>
-                  </div>
-                </button>
+                <HoverCard
+                  key={item.title}
+                  image={item.image}
+                  title={item.title}
+                  description={item.description}
+                />
               ))}
             </div>
           </div>
