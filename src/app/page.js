@@ -1,4 +1,5 @@
 import { connection } from "next/server";
+import Link from "next/link";
 import TopNav from "../components/TopNav";
 import HoverCard from "../components/HoverCard";
 import Gallery from "../components/Gallery";
@@ -94,16 +95,16 @@ export default async function Home() {
           />
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-            <a
+            <Link
               href="/events"
               className="border-2 border-white bg-transparent px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-white hover:text-black"
             >
               VIEW EVENTS
-            </a>
+            </Link>
 
-            <a href="/booking" className="cta-button">
+            <Link href="/booking" className="cta-button">
               BOOK TABLE
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -169,7 +170,7 @@ export default async function Home() {
 
             <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
               <article>
-                <a href="/events/1" className="block">
+                <Link href="/events/1" className="block">
                   <img
                     src="/assets/content-img/event-thumb1.jpg"
                     alt="Neon Nights Grand Opening"
@@ -180,11 +181,11 @@ export default async function Home() {
                     <h3>Neon Nights Grand Opening</h3>
                     <p>May 9 · 21:00</p>
                   </div>
-                </a>
+                </Link>
               </article>
 
               <article>
-                <a href="/events/2" className="block">
+                <Link href="/events/2" className="block">
                   <img
                     src="/assets/content-img/event-thumb2.jpg"
                     alt="Disco Fever Saturday"
@@ -195,7 +196,7 @@ export default async function Home() {
                     <h3>Disco Fever Saturday</h3>
                     <p>June 27 · 21:00</p>
                   </div>
-                </a>
+                </Link>
               </article>
             </div>
           </div>
@@ -272,7 +273,6 @@ export default async function Home() {
         </section>
 
         <Testimonials testimonials={testimonials} />
-
         <Newsletter />
       </main>
     </>
