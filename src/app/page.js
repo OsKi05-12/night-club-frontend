@@ -3,6 +3,7 @@ import TopNav from "../components/TopNav";
 import HoverCard from "../components/HoverCard";
 import Gallery from "../components/Gallery";
 import Testimonials from "../components/Testimonials";
+import Newsletter from "../components/Newsletter";
 
 export default async function Home() {
   await connection();
@@ -271,6 +272,8 @@ export default async function Home() {
         </section>
 
         <Testimonials testimonials={testimonials} />
+
+        <Newsletter />
       </main>
     </>
   );
