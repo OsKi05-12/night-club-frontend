@@ -18,6 +18,7 @@ export default async function Home() {
   const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   let galleryImages = [];
+  let testimonials = [];
 
   try {
     const response = await fetch(`${apiUrl}/gallery`, {
@@ -40,8 +41,6 @@ export default async function Home() {
     console.error("Gallery:", error);
   }
 
-  let testimonials = [];
-
   try {
     const response = await fetch(`${apiUrl}/testimonials`, {
       cache: "no-store",
@@ -57,10 +56,14 @@ export default async function Home() {
       id: item.id,
       name: item.name,
       content: item.content,
+      facebook: item.facebook,
+      twitter: item.twitter,
       src:
         item.id === 1
           ? "/assets/content-img/testimonial_3.jpg"
-          : new URL(item.asset.url, apiUrl).href,
+          : item.id === 3
+            ? "/assets/content-img/testimonial_1.jpg"
+            : new URL(item.asset.url, apiUrl).href,
       alt: item.asset.alt,
     }));
   } catch (error) {
@@ -85,7 +88,7 @@ export default async function Home() {
 
           <img
             src="/assets/bottom_line2.png"
-            alt="Bottom Line"
+            alt=""
             className="hero-line mx-auto mt-2 w-120"
           />
 
@@ -115,7 +118,7 @@ export default async function Home() {
 
             <img
               src="/assets/bottom_line2.png"
-              alt="Bottom Line"
+              alt=""
               className="mx-auto mt-2"
             />
 
@@ -237,7 +240,9 @@ export default async function Home() {
 
               <div
                 className="absolute bottom-0 right-0 h-10 w-10 bg-pink-500"
-                style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}
+                style={{
+                  clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
+                }}
               />
             </div>
 

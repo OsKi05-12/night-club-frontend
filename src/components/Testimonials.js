@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function Testimonials({ testimonials }) {
+export default function Testimonials({ testimonials = [] }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const testimonial = testimonials[selectedIndex];
@@ -40,21 +40,41 @@ export default function Testimonials({ testimonials }) {
         </div>
 
         <div className="mt-8 flex justify-center gap-3">
-          <img
-            src="/assets/icon/facebook.png"
-            alt="Facebook"
-            width={36}
-            height={36}
-            className="size-9 object-contain"
-          />
+          {testimonial.facebook && (
+            <a
+              href={testimonial.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${testimonial.name} on Facebook`}
+              className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-500"
+            >
+              <img
+                src="/assets/icon/facebook.png"
+                alt=""
+                width={36}
+                height={36}
+                className="size-9 object-contain"
+              />
+            </a>
+          )}
 
-          <img
-            src="/assets/icon/twitter2.png"
-            alt="Twitter"
-            width={36}
-            height={36}
-            className="size-9 object-contain"
-          />
+          {testimonial.twitter && (
+            <a
+              href={testimonial.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${testimonial.name} on Twitter`}
+              className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-500"
+            >
+              <img
+                src="/assets/icon/twitter2.png"
+                alt=""
+                width={36}
+                height={36}
+                className="size-9 object-contain"
+              />
+            </a>
+          )}
 
           <img
             src="/assets/icon/snap.png"
