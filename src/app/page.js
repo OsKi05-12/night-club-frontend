@@ -14,6 +14,7 @@ export default async function Home() {
     "/assets/bg/header_bg_2.jpg",
   ];
 
+  // eslint-disable-next-line react-hooks/purity
   const randomIndex = Math.floor(Math.random() * heroImages.length);
   const selectedImage = heroImages[randomIndex];
 
@@ -273,6 +274,7 @@ export default async function Home() {
         </section>
 
         <Testimonials testimonials={testimonials} />
+
         <Newsletter />
       </main>
     </>
