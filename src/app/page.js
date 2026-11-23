@@ -1,7 +1,10 @@
 import { connection } from "next/server";
+import Link from "next/link";
 import TopNav from "../components/TopNav";
 import HoverCard from "../components/HoverCard";
 import Gallery from "../components/Gallery";
+import Testimonials from "../components/Testimonials";
+import Newsletter from "../components/Newsletter";
 
 export default async function Home() {
   await connection();
@@ -11,12 +14,14 @@ export default async function Home() {
     "/assets/bg/header_bg_2.jpg",
   ];
 
+  // eslint-disable-next-line react-hooks/purity
   const randomIndex = Math.floor(Math.random() * heroImages.length);
   const selectedImage = heroImages[randomIndex];
 
   const apiUrl = process.env.API_URL || "http://localhost:4000";
 
   let galleryImages = [];
+  let testimonials = [];
 
   try {
     const response = await fetch(`${apiUrl}/gallery`, {
@@ -39,6 +44,35 @@ export default async function Home() {
     console.error("Gallery:", error);
   }
 
+  try {
+    const response = await fetch(`${apiUrl}/testimonials`, {
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not load testimonials");
+    }
+
+    const data = await response.json();
+
+    testimonials = data.map((item) => ({
+      id: item.id,
+      name: item.name,
+      content: item.content,
+      facebook: item.facebook,
+      twitter: item.twitter,
+      src:
+        item.id === 1
+          ? "/assets/content-img/testimonial_3.jpg"
+          : item.id === 3
+            ? "/assets/content-img/testimonial_1.jpg"
+            : new URL(item.asset.url, apiUrl).href,
+      alt: item.asset.alt,
+    }));
+  } catch (error) {
+    console.error("Testimonials:", error);
+  }
+
   return (
     <>
       <section
@@ -57,21 +91,21 @@ export default async function Home() {
 
           <img
             src="/assets/bottom_line2.png"
-            alt="Bottom Line"
+            alt=""
             className="hero-line mx-auto mt-2 w-120"
           />
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-            <a
+            <Link
               href="/events"
               className="border-2 border-white bg-transparent px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-white hover:text-black"
             >
               VIEW EVENTS
-            </a>
+            </Link>
 
-            <a href="/booking" className="cta-button">
+            <Link href="/booking" className="cta-button">
               BOOK TABLE
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -87,7 +121,7 @@ export default async function Home() {
 
             <img
               src="/assets/bottom_line2.png"
-              alt="Bottom Line"
+              alt=""
               className="mx-auto mt-2"
             />
 
@@ -137,7 +171,7 @@ export default async function Home() {
 
             <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
               <article>
-                <a href="/events/1" className="block">
+                <Link href="/events/1" className="block">
                   <img
                     src="/assets/content-img/event-thumb1.jpg"
                     alt="Neon Nights Grand Opening"
@@ -148,11 +182,11 @@ export default async function Home() {
                     <h3>Neon Nights Grand Opening</h3>
                     <p>May 9 · 21:00</p>
                   </div>
-                </a>
+                </Link>
               </article>
 
               <article>
-                <a href="/events/2" className="block">
+                <Link href="/events/2" className="block">
                   <img
                     src="/assets/content-img/event-thumb2.jpg"
                     alt="Disco Fever Saturday"
@@ -163,7 +197,7 @@ export default async function Home() {
                     <h3>Disco Fever Saturday</h3>
                     <p>June 27 · 21:00</p>
                   </div>
-                </a>
+                </Link>
               </article>
             </div>
           </div>
@@ -209,7 +243,9 @@ export default async function Home() {
 
               <div
                 className="absolute bottom-0 right-0 h-10 w-10 bg-pink-500"
-                style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}
+                style={{
+                  clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
+                }}
               />
             </div>
 
@@ -236,6 +272,10 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
+        <Testimonials testimonials={testimonials} />
+
+        <Newsletter />
       </main>
     </>
   );
