@@ -2,6 +2,7 @@ import { connection } from "next/server";
 import TopNav from "../components/TopNav";
 import HoverCard from "../components/HoverCard";
 import Gallery from "../components/Gallery";
+import Testimonials from "../components/Testimonials";
 
 export default async function Home() {
   await connection();
@@ -37,6 +38,33 @@ export default async function Home() {
     }));
   } catch (error) {
     console.error("Gallery:", error);
+  }
+
+  let testimonials = [];
+
+  try {
+    const response = await fetch(`${apiUrl}/testimonials`, {
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not load testimonials");
+    }
+
+    const data = await response.json();
+
+    testimonials = data.map((item) => ({
+      id: item.id,
+      name: item.name,
+      content: item.content,
+      src:
+        item.id === 1
+          ? "/assets/content-img/testimonial_3.jpg"
+          : new URL(item.asset.url, apiUrl).href,
+      alt: item.asset.alt,
+    }));
+  } catch (error) {
+    console.error("Testimonials:", error);
   }
 
   return (
@@ -236,6 +264,8 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
+        <Testimonials testimonials={testimonials} />
       </main>
     </>
   );

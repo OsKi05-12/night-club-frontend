@@ -383,3 +383,47 @@ body {
     transition: none;
   }
 }
+
+.testimonials-bg {
+  background-color: oklch(0% 0 0);
+  background-image:
+    linear-gradient(oklch(0% 0 0 / 65%), oklch(0% 0 0 / 65%)),
+    url("/assets/bg/footerbg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.testimonial-dot {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: oklch(0% 0 0 / 0%);
+  cursor: pointer;
+}
+
+.testimonial-dot span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: oklch(100% 0 0);
+  transition: background-color 200ms;
+}
+
+.testimonial-dot[aria-pressed="true"] span,
+.testimonial-dot:hover span {
+  background: oklch(65% 0.25 10);
+}
+
+.testimonial-dot:focus-visible {
+  outline: 3px solid oklch(75% 0.2 10);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-dot span {
+    transition: none;
+  }
+}
