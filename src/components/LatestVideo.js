@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const videos = [
-  "/assets/media/video-dj-crowd-2-mp4",
+  "/assets/media/video-dj-crowd-2.mp4",
   "/assets/media/video-dj-crowd1.mp4",
 ];
 
