@@ -2,6 +2,7 @@ import { connection } from "next/server";
 import Link from "next/link";
 import TopNav from "../components/TopNav";
 import HoverCard from "../components/HoverCard";
+import FeaturedEvents from "../components/FeaturedEvents";
 import Gallery from "../components/Gallery";
 import Testimonials from "../components/Testimonials";
 import Newsletter from "../components/Newsletter";
@@ -157,51 +158,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="bg-black px-6 py-20 text-white">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
-              Featured Events
-            </h2>
-
-            <img
-              src="/assets/bottom_line2.png"
-              alt=""
-              className="mx-auto mt-2"
-            />
-
-            <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
-              <article>
-                <Link href="/events/1" className="block">
-                  <img
-                    src="/assets/content-img/event-thumb1.jpg"
-                    alt="Neon Nights Grand Opening"
-                    className="h-80 w-full object-cover"
-                  />
-
-                  <div className="flex justify-between gap-4 bg-pink-600 p-4">
-                    <h3>Neon Nights Grand Opening</h3>
-                    <p>May 9 · 21:00</p>
-                  </div>
-                </Link>
-              </article>
-
-              <article>
-                <Link href="/events/2" className="block">
-                  <img
-                    src="/assets/content-img/event-thumb2.jpg"
-                    alt="Disco Fever Saturday"
-                    className="h-80 w-full object-cover"
-                  />
-
-                  <div className="flex justify-between gap-4 bg-pink-600 p-4">
-                    <h3>Disco Fever Saturday</h3>
-                    <p>June 27 · 21:00</p>
-                  </div>
-                </Link>
-              </article>
-            </div>
-          </div>
-        </section>
+        <FeaturedEvents />
 
         <Gallery images={galleryImages} />
 
