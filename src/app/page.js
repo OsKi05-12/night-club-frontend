@@ -174,9 +174,7 @@ export default async function Home() {
               className="mx-auto mt-2"
             />
 
-            <div className="mt-16 flex min-h-64 items-center justify-center bg-zinc-900">
-              <p className="text-zinc-400">Music player</p>
-            </div>
+            <MusicPlayer />
           </div>
         </section>
 
