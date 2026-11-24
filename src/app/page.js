@@ -7,6 +7,7 @@ import Gallery from "../components/Gallery";
 import Testimonials from "../components/Testimonials";
 import Newsletter from "../components/Newsletter";
 import MusicPlayer from "../components/MusicPlayer";
+import LatestVideo from "../components/LatestVideo";
 
 export default async function Home() {
   await connection();
@@ -165,17 +166,9 @@ export default async function Home() {
 
         <section className="bg-black px-6 py-20 text-white">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
-              Night Club Music
-            </h2>
-
-            <img
-              src="/assets/bottom_line2.png"
-              alt=""
-              className="mx-auto mt-2"
-            />
-
             <MusicPlayer />
+
+            <LatestVideo />
           </div>
         </section>
 
