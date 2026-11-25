@@ -596,3 +596,53 @@ body {
     transition: none;
   }
 }
+
+.read-more-button {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
+  min-height: 44px;
+  padding: 12px 24px;
+  overflow: hidden;
+  border-top: 1px solid oklch(100% 0 0);
+  border-bottom: 1px solid oklch(100% 0 0);
+  color: oklch(100% 0 0);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 300ms ease;
+}
+
+.read-more-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: oklch(65% 0.25 10);
+  transform: translateX(-101%);
+  transition: transform 300ms ease;
+}
+
+.read-more-button:is(:hover, :focus-visible) {
+  border-color: oklch(65% 0.25 10);
+}
+
+.read-more-button:is(:hover, :focus-visible)::before {
+  transform: translateX(0);
+}
+
+.read-more-button:focus-visible {
+  outline: 2px solid oklch(75% 0.2 10);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .read-more-button,
+  .read-more-button::before {
+    transition: none;
+  }
+}
