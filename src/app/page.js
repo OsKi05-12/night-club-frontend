@@ -8,6 +8,7 @@ import Testimonials from "../components/Testimonials";
 import Newsletter from "../components/Newsletter";
 import MusicPlayer from "../components/MusicPlayer";
 import LatestVideo from "../components/LatestVideo";
+import Loader from "../components/Loader";
 
 export default async function Home() {
   await connection();
@@ -78,6 +79,8 @@ export default async function Home() {
 
   return (
     <>
+      <Loader />
+
       <section
         className="flex items-center justify-center bg-cover bg-center"
         style={{
