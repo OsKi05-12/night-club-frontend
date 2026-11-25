@@ -518,6 +518,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
 }
+
 .hero-loader {
   position: fixed;
   inset: 0;
@@ -528,6 +529,7 @@ body {
   align-items: center;
   animation: hideLoader 0.5s ease 2s forwards;
 }
+
 .nav-link {
   position: relative;
   display: inline-block;
@@ -585,6 +587,7 @@ body {
 .music-player {
   height: 45px;
 }
+
 @keyframes hideLoader {
   to {
     opacity: 0;
@@ -605,6 +608,42 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .newsletter-form button {
+    transition: none;
+  }
+}
+
+.read-more-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
+  min-height: 44px;
+  padding: 12px 24px;
+  border-top: 1px solid oklch(100% 0 0);
+  border-bottom: 1px solid oklch(100% 0 0);
+  background: oklch(0% 0 0);
+  color: oklch(100% 0 0);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 300ms ease,
+    border-color 300ms ease;
+}
+
+.read-more-button:is(:hover, :focus-visible) {
+  color: oklch(65% 0.25 10);
+  border-color: oklch(65% 0.25 10);
+}
+
+.read-more-button:focus-visible {
+  outline: 2px solid oklch(75% 0.2 10);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .read-more-button {
     transition: none;
   }
 }
