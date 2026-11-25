@@ -18,11 +18,11 @@ export default async function FeaturedEvents() {
 
     featuredEvents = events.filter((event) => event.isFeatured === true);
   } catch (error) {
-    console.error("Featured Events:", error);
-
     return (
       <section className="bg-black px-6 py-20 text-center text-white">
-        <h2 className="mb-12 text-3xl font-bold uppercase">Featured Events</h2>
+        <h2 className="mb-12 text-3xl font-bold uppercase">
+          Events of the Month
+        </h2>
 
         <p>Events could not be loaded. Please try again later.</p>
       </section>
@@ -31,75 +31,75 @@ export default async function FeaturedEvents() {
 
   return (
     <section className="bg-black px-6 py-20 text-white">
-      <h2 className="mb-12 text-center text-3xl font-bold uppercase">
-        Featured Events
-      </h2>
+      <div className="mx-auto max-w-6xl">
+        <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
+          Events of the Month
+        </h2>
 
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2">
-        {featuredEvents.map((event) => {
-          const date = new Date(event.date);
+        <img
+          src="/assets/bottom_line2.png"
+          alt=""
+          className="mx-auto mb-12 mt-2"
+        />
 
-          const eventDate = date.toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "short",
-            timeZone: "Europe/Copenhagen",
-          });
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          {featuredEvents.map((event) => {
+            const date = new Date(event.date);
 
-          const eventTime = date.toLocaleTimeString("en-GB", {
-            hour: "2-digit",
-            minute: "2-digit",
-            timeZone: "Europe/Copenhagen",
-          });
+            const eventDate = date.toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "short",
+              timeZone: "Europe/Copenhagen",
+            });
 
-          return (
-            <article key={event.id} className="group">
-              <div className="relative overflow-hidden">
-                <img
-                  src={new URL(event.asset.url, apiUrl).href}
-                  alt={event.asset.alt || event.title}
-                  className="h-80 w-full object-cover"
-                />
+            const eventTime = date.toLocaleTimeString("en-GB", {
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: "Europe/Copenhagen",
+            });
 
-                <div className="pointer-events-none absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100 motion-reduce:transition-none" />
+            return (
+              <article key={event.id} className="group">
+                <div className="relative aspect-[570/403] overflow-hidden">
+                  <img
+                    src={new URL(event.asset.url, apiUrl).href}
+                    alt={event.asset.alt}
+                    className="h-full w-full object-cover"
+                  />
 
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute left-0 top-0 h-0 w-0 border-r-[35px] border-t-[35px] border-r-transparent border-t-pink-600 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100 motion-reduce:transition-none"
-                />
+                  <div className="absolute inset-0 bg-black/50 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100" />
 
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute bottom-0 right-0 h-0 w-0 border-b-[35px] border-l-[35px] border-b-pink-600 border-l-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100 motion-reduce:transition-none"
-                />
+                  <div className="absolute left-0 top-0 h-0.5 w-full bg-pink-500 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100" />
 
-                <div className="absolute inset-0 flex flex-col items-center justify-between p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100 motion-reduce:transition-none">
-                  <Link
-                    href={`/booking?eventId=${event.id}`}
-                    className="bg-pink-600 px-6 py-3 text-sm font-bold text-white hover:bg-pink-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                  >
-                    Book Now
-                  </Link>
+                  <div className="absolute left-0 top-[30%] flex w-full justify-center transition-all duration-500 md:-translate-y-8 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100">
+                    <Link
+                      href={`/booking?eventId=${event.id}`}
+                      className="bg-pink-500 px-7 py-3 text-sm font-bold text-white hover:bg-pink-600"
+                    >
+                      Book Now
+                    </Link>
+                  </div>
 
-                  <div className="w-full bg-black/70 p-4">
+                  <div className="absolute bottom-0 left-0 w-full bg-black/80 p-5 transition-transform duration-500 md:translate-y-full md:group-hover:translate-y-0 md:group-focus-within:translate-y-0">
                     <h3 className="mb-2 text-lg font-bold uppercase">
                       {event.title}
                     </h3>
 
-                    <p className="text-sm text-gray-200">{event.excerpt}</p>
+                    <p className="text-sm leading-relaxed text-gray-200">
+                      {event.excerpt}
+                    </p>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex flex-wrap items-center justify-between gap-2 bg-pink-700 px-4 py-3 text-sm">
-                <span className="font-semibold">{event.title}</span>
-
-                <span>
-                  {eventDate} · {eventTime} · {event.location}
-                </span>
-              </div>
-            </article>
-          );
-        })}
+                <div className="flex flex-wrap items-center gap-5 bg-pink-500 px-5 py-3 text-sm font-semibold">
+                  <span>{eventDate}</span>
+                  <span>{eventTime}</span>
+                  <span>{event.location}</span>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
