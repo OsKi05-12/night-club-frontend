@@ -518,6 +518,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
 }
+
 .hero-loader {
   position: fixed;
   inset: 0;
@@ -528,6 +529,7 @@ body {
   align-items: center;
   animation: hideLoader 0.5s ease 2s forwards;
 }
+
 .nav-link {
   position: relative;
   display: inline-block;
@@ -573,6 +575,7 @@ body {
 .nav-link.active {
   color: #ff206c;
 }
+
 @keyframes hideLoader {
   to {
     opacity: 0;
@@ -598,41 +601,28 @@ body {
 }
 
 .read-more-button {
-  position: relative;
-  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 130px;
   min-height: 44px;
   padding: 12px 24px;
-  overflow: hidden;
   border-top: 1px solid oklch(100% 0 0);
   border-bottom: 1px solid oklch(100% 0 0);
+  background: oklch(0% 0 0);
   color: oklch(100% 0 0);
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
-  transition: border-color 300ms ease;
-}
-
-.read-more-button::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: oklch(65% 0.25 10);
-  transform: translateX(-101%);
-  transition: transform 300ms ease;
+  transition:
+    color 300ms ease,
+    border-color 300ms ease;
 }
 
 .read-more-button:is(:hover, :focus-visible) {
+  color: oklch(65% 0.25 10);
   border-color: oklch(65% 0.25 10);
-}
-
-.read-more-button:is(:hover, :focus-visible)::before {
-  transform: translateX(0);
 }
 
 .read-more-button:focus-visible {
@@ -641,8 +631,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .read-more-button,
-  .read-more-button::before {
+  .read-more-button {
     transition: none;
   }
 }
