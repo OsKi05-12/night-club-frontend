@@ -1,6 +1,6 @@
 import TopNav from "../../components/TopNav";
 import PageHeader from "../../components/PageHeader";
-import ContactForm from "./ContactForm";
+import ContactForm from "../../components/ContactForm";
 
 export default function ContactPage() {
   async function sendMessage(_previousState, formData) {
