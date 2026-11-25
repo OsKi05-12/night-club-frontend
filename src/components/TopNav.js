@@ -17,29 +17,29 @@ export default function TopNav() {
       <div className="flex items-center gap-8">
         <Link className="nav-link" href="/">
           <span className="nav-text">
-            <span>Home</span>
-            <span aria-hidden="true">Home</span>
+            <span>HOME</span>
+            <span aria-hidden="true">HOME</span>
           </span>
         </Link>
 
         <Link className="nav-link" href="/events">
           <span className="nav-text">
-            <span>Events</span>
-            <span aria-hidden="true">Events</span>
+            <span>EVENTS</span>
+            <span aria-hidden="true">EVENTS</span>
           </span>
         </Link>
 
         <Link className="nav-link" href="/booking">
           <span className="nav-text">
-            <span>Book Table</span>
-            <span aria-hidden="true">Book Table</span>
+            <span>BOOK TABLE</span>
+            <span aria-hidden="true">BOOK TABLE</span>
           </span>
         </Link>
 
         <Link className="nav-link" href="/contact">
           <span className="nav-text">
-            <span>Contact Us</span>
-            <span aria-hidden="true">Contact Us</span>
+            <span>CONTACT US</span>
+            <span aria-hidden="true">CONTACT US</span>
           </span>
         </Link>
       </div>

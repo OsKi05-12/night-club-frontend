@@ -36,11 +36,11 @@ export default function MusicPlayer() {
           className="mx-auto mt-2 mb-12"
         />
 
-        <div className="grid items-center gap-8 md:grid-cols-2">
+        <div className="grid items-center gap-8 md:grid-cols-[1fr_3fr]">
           <img
             src={tracks[selected].image}
             alt={tracks[selected].title}
-            className="h-80 w-full object-cover"
+            className="h-64 w-full object-cover"
           />
 
           <div>
@@ -53,12 +53,12 @@ export default function MusicPlayer() {
               src={tracks[selected].audio}
               controls
               autoPlay={selected !== 0}
-              className="w-full"
+              className="music-player w-full"
             />
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-0">
           {tracks.map((track, index) => (
             <button
               key={track.title}

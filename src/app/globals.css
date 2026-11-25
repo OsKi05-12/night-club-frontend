@@ -573,6 +573,18 @@ body {
 .nav-link.active {
   color: #ff206c;
 }
+
+.music-player::-webkit-media-controls-panel {
+  background-color: #ff297b;
+}
+
+.music-player::-webkit-media-controls-enclosure {
+  border-radius: 0;
+}
+
+.music-player {
+  height: 45px;
+}
 @keyframes hideLoader {
   to {
     opacity: 0;

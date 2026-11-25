@@ -92,7 +92,7 @@ export default async function Home() {
           <img
             src="/assets/icon/Logo.svg"
             alt="Night Club"
-            className="hero-logo mx-auto w-128"
+            className="hero-logo mx-auto w-144"
           />
 
           <img
@@ -172,56 +172,6 @@ export default async function Home() {
             <MusicPlayer />
 
             <LatestVideo />
-          </div>
-        </section>
-
-        <section className="bg-zinc-950 px-6 py-20 text-white">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="mb-12 text-center text-3xl font-bold uppercase">
-              Latest Video
-            </h2>
-
-            <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">
-              <img
-                src="/assets/content-img/video_poster.jpg"
-                alt="DJ spiller musik i natklubben"
-                className="h-full w-full object-cover"
-              />
-
-              <div
-                className="absolute left-0 top-0 h-10 w-10 bg-pink-500"
-                style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}
-              />
-
-              <div
-                className="absolute bottom-0 right-0 h-10 w-10 bg-pink-500"
-                style={{
-                  clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
-                }}
-              />
-            </div>
-
-            <div className="mt-6 flex justify-center gap-2">
-              <button
-                type="button"
-                aria-label="Previous video"
-                className="flex h-8 w-8 items-center justify-center border border-white"
-              >
-                <img
-                  src="/assets/icon/play.svg"
-                  alt=""
-                  className="h-3 w-3 rotate-180"
-                />
-              </button>
-
-              <button
-                type="button"
-                aria-label="Next video"
-                className="flex h-8 w-8 items-center justify-center border border-white"
-              >
-                <img src="/assets/icon/play.svg" alt="" className="h-3 w-3" />
-              </button>
-            </div>
           </div>
         </section>
 
