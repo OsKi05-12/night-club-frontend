@@ -145,29 +145,53 @@ export default function Footer() {
             <p className="mb-4">Stay Connected With Us</p>
 
             <div className="flex justify-center gap-4">
-              <img
-                src="/assets/icon/facebook.png"
-                alt="Facebook"
-                width={44}
-                height={44}
-                className="size-11 object-contain"
-              />
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Facebook (opens in a new tab)"
+                className="rounded-sm transition-opacity hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-500"
+              >
+                <img
+                  src="/assets/icon/facebook.png"
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="size-11 object-contain"
+                />
+              </a>
 
-              <img
-                src="/assets/icon/snap.png"
-                alt="Snapchat"
-                width={44}
-                height={44}
-                className="size-11 object-contain"
-              />
+              <a
+                href="https://www.snapchat.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Snapchat (opens in a new tab)"
+                className="rounded-sm transition-opacity hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-500"
+              >
+                <img
+                  src="/assets/icon/snap.png"
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="size-11 object-contain"
+                />
+              </a>
 
-              <img
-                src="/assets/icon/insta.png"
-                alt="Instagram"
-                width={44}
-                height={44}
-                className="size-11 object-contain"
-              />
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Instagram (opens in a new tab)"
+                className="rounded-sm transition-opacity hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-500"
+              >
+                <img
+                  src="/assets/icon/insta.png"
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="size-11 object-contain"
+                />
+              </a>
             </div>
           </div>
 

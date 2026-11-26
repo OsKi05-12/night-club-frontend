@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
-
 const tables = Array.from({ length: 15 }, (_, index) => {
   const number = index + 1;
   const type = number % 5 === 0 ? 3 : number % 5 === 3 ? 2 : 1;
@@ -21,7 +19,12 @@ function getDate(date) {
   });
 }
 
-export default function BookingForm({ events, reservations, initialEventId }) {
+export default function BookingForm({
+  events,
+  reservations,
+  initialEventId,
+  reserveTable,
+}) {
   const [eventId, setEventId] = useState(
     events.some((event) => String(event.id) === initialEventId)
       ? initialEventId
@@ -47,10 +50,12 @@ export default function BookingForm({ events, reservations, initialEventId }) {
     : [];
 
   const inputStyle =
-    "w-full border border-zinc-600 bg-transparent p-4 text-white outline-none focus:border-pink-500";
+    "w-full border border-zinc-600 bg-black p-4 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500";
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if (pending) return;
 
     setMessage("");
     setSuccess(false);
@@ -68,60 +73,27 @@ export default function BookingForm({ events, reservations, initialEventId }) {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    const reservation = {
-      name: formData.get("name").trim(),
-      email: formData.get("email").trim(),
-      table,
-      guests: formData.get("guests"),
-      date: selectedEvent.doorsOpen || selectedEvent.date,
-      phone: formData.get("phone").trim(),
-      eventId: selectedEvent.id,
-    };
-
-    if (!reservation.name || reservation.phone.replace(/\D/g, "").length < 8) {
-      setMessage("Please enter a valid name and phone number.");
-      return;
-    }
-
     setPending(true);
 
     try {
-      const response = await fetch(`${apiUrl}/reservations`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(reservation),
-      });
+      const result = await reserveTable(formData);
 
-      if (response.status === 409) {
-        setBookings((previous) => [
-          ...previous,
-          { table: reservation.table, date: reservation.date },
-        ]);
+      setSuccess(result.success);
+      setMessage(result.message);
+
+      if (result.reservation && (result.success || result.conflict)) {
+        setBookings((previous) => [...previous, result.reservation]);
 
         setTable("");
-        setMessage("This table is already reserved.");
-        return;
       }
 
-      if (!response.ok) {
-        setMessage("Please check your booking details.");
-        return;
+      if (result.success) {
+        form.reset();
       }
-
-      setBookings((previous) => [
-        ...previous,
-        { table: reservation.table, date: reservation.date },
-      ]);
-
-      setSuccess(true);
-      setMessage("Your table has been successfully reserved!");
-
-      form.reset();
-      setTable("");
     } catch {
-      setMessage("Something went wrong. Please try again.");
+      setMessage(
+        "Your booking could not be completed. Please try again later.",
+      );
     } finally {
       setPending(false);
     }
@@ -141,13 +113,16 @@ export default function BookingForm({ events, reservations, initialEventId }) {
                 key={item.number}
                 type="button"
                 disabled={isReserved || pending}
-                aria-label={`Table ${item.number}, ${item.capacity} guests${isReserved ? ", reserved" : ""}`}
+                aria-label={`Table ${item.number}, ${item.capacity} guests${
+                  isReserved ? ", reserved" : ""
+                }`}
                 aria-pressed={isSelected}
                 onClick={() => {
                   setTable(String(item.number));
                   setMessage("");
+                  setSuccess(false);
                 }}
-                className={`relative flex h-28 items-center justify-center border-2 transition-colors ${
+                className={`relative flex h-28 items-center justify-center border-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-500 ${
                   isReserved
                     ? "cursor-not-allowed border-red-900 opacity-40"
                     : isSelected
@@ -179,17 +154,21 @@ export default function BookingForm({ events, reservations, initialEventId }) {
           Book a Table
         </h2>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} aria-busy={pending}>
           <fieldset
             disabled={pending}
             className="grid grid-cols-1 gap-4 md:grid-cols-2"
           >
+            <legend className="sr-only">Booking details</legend>
+
             <input
               type="text"
               name="name"
               placeholder="Your Name"
               aria-label="Your Name"
+              autoComplete="name"
               required
+              maxLength={100}
               className={inputStyle}
             />
 
@@ -198,14 +177,16 @@ export default function BookingForm({ events, reservations, initialEventId }) {
               name="email"
               placeholder="Your Email"
               aria-label="Your Email"
+              autoComplete="email"
               required
+              maxLength={254}
               className={inputStyle}
             />
 
             <input
               type="text"
               name="table"
-              placeholder="Table Number"
+              placeholder="Select a table above"
               aria-label="Table Number"
               value={table}
               readOnly
@@ -218,6 +199,7 @@ export default function BookingForm({ events, reservations, initialEventId }) {
               placeholder="Number of Guests"
               aria-label="Number of Guests"
               min="1"
+              step="1"
               max={selectedTable?.capacity || 8}
               required
               className={inputStyle}
@@ -232,8 +214,9 @@ export default function BookingForm({ events, reservations, initialEventId }) {
                 setEventId(event.target.value);
                 setTable("");
                 setMessage("");
+                setSuccess(false);
               }}
-              className={`${inputStyle} bg-black`}
+              className={inputStyle}
             >
               <option value="">Choose Night</option>
 
@@ -254,25 +237,25 @@ export default function BookingForm({ events, reservations, initialEventId }) {
               name="phone"
               placeholder="Your Contact Number"
               aria-label="Your Contact Number"
+              autoComplete="tel"
               required
+              maxLength={30}
               className={inputStyle}
             />
           </fieldset>
 
-          {message && (
-            <p
-              role="status"
-              className={`mt-6 ${success ? "text-green-400" : "text-red-400"}`}
-            >
-              {message}
-            </p>
-          )}
+          <p
+            role="status"
+            className={`mt-6 ${success ? "text-green-400" : "text-red-400"}`}
+          >
+            {message}
+          </p>
 
           <div className="mt-8 flex justify-end">
             <button
               type="submit"
               disabled={pending}
-              className="cursor-pointer border-y border-white px-10 py-3 uppercase transition-colors hover:border-pink-500 hover:bg-pink-500 disabled:opacity-50"
+              className="read-more-button cursor-pointer disabled:cursor-wait disabled:opacity-50"
             >
               {pending ? "Reserving..." : "Reserve"}
             </button>

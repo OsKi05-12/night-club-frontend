@@ -523,7 +523,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: #080808;
+  background: oklch(13.44% 0 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -548,7 +548,7 @@ body {
 }
 
 .nav-text span:last-child {
-  color: #ff206c;
+  color: oklch(64.88% 0.25 9.1);
 }
 
 .nav-link:hover .nav-text span {
@@ -573,11 +573,11 @@ body {
 }
 
 .nav-link.active {
-  color: #ff206c;
+  color: oklch(64.88% 0.25 9.1);
 }
 
 .music-player::-webkit-media-controls-panel {
-  background-color: #ff297b;
+  background-color: oklch(65.77% 0.249 3.5);
 }
 
 .music-player::-webkit-media-controls-enclosure {
