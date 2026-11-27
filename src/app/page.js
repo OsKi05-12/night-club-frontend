@@ -9,6 +9,7 @@ import Newsletter from "../components/Newsletter";
 import MusicPlayer from "../components/MusicPlayer";
 import LatestVideo from "../components/LatestVideo";
 import Loader from "../components/Loader";
+import FAQ from "../components/FAQ";
 
 export default async function Home() {
   await connection();
@@ -18,7 +19,6 @@ export default async function Home() {
     "/assets/bg/header_bg_2.jpg",
   ];
 
-  // eslint-disable-next-line react-hooks/purity
   const randomIndex = Math.floor(Math.random() * heroImages.length);
   const selectedImage = heroImages[randomIndex];
 
@@ -82,7 +82,7 @@ export default async function Home() {
       <Loader />
 
       <section
-        className="flex items-center justify-center bg-cover bg-center"
+        className="flex items-center justify-center bg-black bg-cover bg-center"
         style={{
           backgroundImage: `url('${selectedImage}')`,
           minHeight: "calc(100svh - 6rem)",
@@ -178,6 +178,8 @@ export default async function Home() {
         <Testimonials testimonials={testimonials} />
 
         <Newsletter />
+
+        <FAQ />
       </main>
     </>
   );
